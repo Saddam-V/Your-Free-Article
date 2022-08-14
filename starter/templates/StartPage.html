@@ -19,7 +19,7 @@
     <!-- ######################### -->
     <style>
       .navbar {
-        transition: 0.5s ease-in-out;
+        transition: 1s ease-in-out;
       }
       .intro {
         font-family: 'Caveat', cursive;
@@ -32,6 +32,12 @@
       }
       .card {
         transition: 0.2s ease-in;
+      }
+      #introduction {
+        transition: 1s ease-in-out;
+      }
+      #mycards {
+        transition: 1s ease-in-out;
       }
       /* .intro:hover {
         background-color: burlywood;
@@ -65,12 +71,72 @@
     <!-- ##################### -->
     <!-- My script -->
     <script>
+      var i = 0;
       function changeColor() {
+        // i = 0;
+        const color = [
+          'pink',
+          'aqua',
+          'cadetblue',
+          'antiquewhite',
+          'aliceblue',
+          'white',
+          'gray',
+          'green',
+          'violet',
+          'yellow',
+          'brown',
+        ];
         nvbar = document.getElementById('nvbar');
-        console.log('accessed');
-        nvbar.style.backgroundColor = 'red';
-        setInterval(changeColor, 5000);
-        clearInterval();
+        nvbar.style.backgroundColor = color[i];
+        i += 1;
+        if (i == 11) {
+          i = 0;
+        }
+      }
+      function changeColorIntro() {
+        // i = 0;
+        const color = [
+          'pink',
+          'aqua',
+          'cadetblue',
+          'antiquewhite',
+          'aliceblue',
+          'white',
+          'gray',
+          'green',
+          'violet',
+          'yellow',
+          'brown',
+        ];
+        nvbar = document.getElementById('introduction');
+        nvbar.style.backgroundColor = color[i];
+        i += 1;
+        if (i == 11) {
+          i = 0;
+        }
+      }
+      function changeColorCards() {
+        // i = 0;
+        const color = [
+          'pink',
+          'aqua',
+          'cadetblue',
+          'antiquewhite',
+          'aliceblue',
+          'white',
+          'gray',
+          'green',
+          'violet',
+          'yellow',
+          'brown',
+        ];
+        nvbar = document.getElementById('mycards');
+        nvbar.style.backgroundColor = color[i];
+        i += 1;
+        if (i == 11) {
+          i = 0;
+        }
       }
     </script>
     <!-- ##################### -->
@@ -96,7 +162,7 @@
     </nav>
     <!-- ##################### -->
     <!-- Introduction Section -->
-    <div class="container-fluid p-5">
+    <div class="container-fluid p-5" id="introduction" onmousemove="changeColorIntro()">
       <div class="row">
         <div class="col-6 text-center intro">
           <h1 style="font-size: 2.5rem">Your Very Free Article Here</h1>
@@ -116,7 +182,14 @@
     </div>
     <!-- #################### -->
     <!-- Cards -->
-    <div class="container-fluid" style="display: flex; flex-direction: column; align-items: center">{%CARD%}</div>
+    <div
+      class="container-fluid"
+      style="display: flex; flex-direction: column; align-items: center"
+      id="mycards"
+      onmousemove="changeColorCards()"
+    >
+      {%CARD%}
+    </div>
     <!-- ##################### -->
     <!-- ##################### -->
   </body>

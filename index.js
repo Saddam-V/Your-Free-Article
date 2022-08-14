@@ -29,22 +29,17 @@ const url = require('url');
 /////////////////////////////////////////////////
 // Server
 
+const startPage = fs.readFileSync('./starter/templates/StartPage.html', 'utf-8');
 const tempCard = fs.readFileSync('./starter/templates/template-card.html', 'utf-8');
-const tempOv = fs.readFileSync('./starter/templates/overview.html', 'utf-8');
+// const tempOv = fs.readFileSync('./starter/templates/overview.html', 'utf-8');
 
 const data = fs.readFileSync('./starter/dev-data/data.json', 'utf-8');
 
 const dataobj = JSON.parse(data);
 
 const replaceTemplate = (temp, product) => {
-  let output = temp.replace(/{%NAME%}/g, product.productName);
-  output = output.replace(/{%IMAGE%}/g, product.image);
-  output = output.replace(/{%QUANTITY%}/g, product.quantity);
-  output = output.replace(/{%PRICE%}/g, product.price);
-  if (!product.organic) {
-    output = output.replace(/{%NOT_ORGANIC%}/g, 'not-organic');
-  }
-
+  let output = temp.replace(/{%CARD-TITLE%}/g, product.cardTitle);
+  output = output.replace(/{%CARD-TEXT%}/g, product.cardText);
   return output;
 };
 
@@ -54,10 +49,10 @@ const server = http.createServer((req, res) => {
   if (pathName === '/' || pathName === '/overview') {
     res.writeHead(200, { 'Content-type': 'text/html' });
     const templatePage = dataobj.map((el) => replaceTemplate(tempCard, el)).join('');
-    const finalPage = tempOv.replace(/{%PRODUCT_BODY%}/g, templatePage);
+    const finalPage = startPage.replace(/{%CARD%}/g, templatePage);
     res.end(finalPage);
   } else if (pathName === '/products') {
-    res.end('This is Products');
+    res.end('This is Articles');
   } else {
     res.writeHead(404, {
       'Content-type': 'text/html',
@@ -70,6 +65,8 @@ const server = http.createServer((req, res) => {
   // res.end('Hey World');
 });
 
-server.listen(process.env.PORT || 8000, '127.0.0.1', () => {
-  console.log('the third argument i.e. callback function is optional');
+const { PORT = 3000, LOCAL_ADDRESS = '0.0.0.0' } = process.env;
+server.listen(PORT, LOCAL_ADDRESS, () => {
+  const address = server.address();
+  console.log('server hearing at an', address);
 });

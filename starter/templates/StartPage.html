@@ -18,6 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet" />
     <!-- ######################### -->
     <style>
+      .navbar {
+        transition: 0.5s ease-in-out;
+      }
       .intro {
         font-family: 'Caveat', cursive;
         font-size: 50px;
@@ -60,10 +63,21 @@
       crossorigin="anonymous"
     ></script>
     <!-- ##################### -->
+    <!-- My script -->
+    <script>
+      function changeColor() {
+        nvbar = document.getElementById('nvbar');
+        console.log('accessed');
+        nvbar.style.backgroundColor = 'red';
+        setInterval(changeColor, 5000);
+        clearInterval();
+      }
+    </script>
+    <!-- ##################### -->
 
     <!-- My Content -->
     <!-- Nav-Bar -->
-    <nav class="navbar bg-light">
+    <nav class="navbar" id="nvbar" onmousemove="changeColor()" style="background-color: darkgray">
       <div class="container">
         <a class="navbar-brand" href="#">
           <img
@@ -90,8 +104,12 @@
           <h3 style="font-size: 2rem">Well, its your wish!</h3>
           <h4>Scroll down for cool content👇</h4>
         </div>
-        <div class="col-6 intro" style="display: flex; justify-content: flex-start; align-items: center">
-          <h3 style="font-size: 2rem">Or just click here to explore👉</h3>
+        <div
+          class="col-6 intro"
+          style="display: flex; justify-content: space-around; align-items: center; flex-direction: column"
+        >
+          <h3 style="font-size: 2rem">Or just click here to explore</h3>
+          <!-- <p>👇</p> -->
           <button type="button" class="btn btn-outline-info">CaTeGoRiEs</button>
         </div>
       </div>

@@ -19,25 +19,27 @@
     <!-- ######################### -->
     <style>
       .navbar {
-        transition: 1s ease-in-out;
+        transition: 6s ease-in-out;
       }
       .intro {
         font-family: 'Caveat', cursive;
         font-size: 50px;
-        transition: 0.2s ease-in;
+        transition: 0.2s ease-in-out;
       }
       .card:hover {
         margin: 0;
-        box-shadow: black 1px 1px 9px 2px;
+        box-shadow: black 0px 0px 2px 0px;
       }
       .card {
-        transition: 0.2s ease-in;
+        transition: 0.5s ease-in-out;
       }
       #introduction {
-        transition: 1s ease-in-out;
+        transition: 0.5s ease-in-out;
+        border-radius: 2%;
       }
       #mycards {
-        transition: 1s ease-in-out;
+        transition: 6s ease-in-out;
+        border-radius: 2%;
       }
       /* .intro:hover {
         background-color: burlywood;
@@ -72,69 +74,92 @@
     <!-- My script -->
     <script>
       var i = 0;
+      var j = 0;
       function changeColor() {
         // i = 0;
         const color = [
-          'pink',
-          'aqua',
-          'cadetblue',
-          'antiquewhite',
           'aliceblue',
-          'white',
-          'gray',
-          'green',
+          'antiquewhite',
+          'aqua',
+          'aquamarine',
+          'azure',
+          'beige',
+          'bisque',
+          'blanchedalmond',
+          'burlywood',
+          'cadetblue',
+          'coral',
+          'cornflowerblue',
+          'cornsilk',
+          'cyan',
+          'darkgray',
+          'darkkhaki',
+          'darkturquoise',
+          'dodgerblue',
+          'floralwhite',
+          'gainsboro',
+          'greenyellow',
+          'honeydew',
+          'indianred',
+          'ivory',
+          'khaki',
+          'lavender',
+          'lavenderblush',
+          'lawngreen',
+          'lemonchiffon',
+          'lightblue',
+          'lightcoral',
+          'lightcyan',
+          'lightgoldenrodyellow',
+          'lightgray',
+          'lightgreen',
+          'lightgrey',
+          'lightpink',
+          'mediumaquamarine',
+          'mediumorchid',
+          'mediumpurple',
+          'mediumseagreen',
+          'mediumslateblue',
+          'mediumspringgreen',
+          'mediumturquoise',
+          'mediumvioletred',
+          'navajowhite',
+          'oldlace',
+          'olive',
+          'palegoldenrod',
+          'palegreen',
+          'paleturquoise',
+          'palevioletred',
+          'papayawhip',
+          'peachpuff',
+          'peru',
+          'pink',
+          'plum',
+          'powderblue',
+          'rosybrown',
+          'royalblue',
+          'salmon',
+          'sandybrown',
+          'seagreen',
+          'seashell',
+          'silver',
+          'skyblue',
+          'slateblue',
+          'slategray',
+          'snow',
+          'thistle',
+          'turquoise',
           'violet',
-          'yellow',
-          'brown',
+          'wheat',
+          'white',
+          'whitesmoke',
+          'yellowgreen',
         ];
+
         nvbar = document.getElementById('nvbar');
         nvbar.style.backgroundColor = color[i];
         i += 1;
-        if (i == 11) {
-          i = 0;
-        }
-      }
-      function changeColorIntro() {
-        // i = 0;
-        const color = [
-          'pink',
-          'aqua',
-          'cadetblue',
-          'antiquewhite',
-          'aliceblue',
-          'white',
-          'gray',
-          'green',
-          'violet',
-          'yellow',
-          'brown',
-        ];
-        nvbar = document.getElementById('introduction');
-        nvbar.style.backgroundColor = color[i];
-        i += 1;
-        if (i == 11) {
-          i = 0;
-        }
-      }
-      function changeColorCards() {
-        // i = 0;
-        const color = [
-          'pink',
-          'aqua',
-          'cadetblue',
-          'antiquewhite',
-          'aliceblue',
-          'white',
-          'gray',
-          'green',
-          'violet',
-          'yellow',
-          'brown',
-        ];
-        nvbar = document.getElementById('mycards');
-        nvbar.style.backgroundColor = color[i];
-        i += 1;
-        if (i == 11) {
+        if (color[i] == 'yellowgreen') {
           i = 0;
         }
       }
@@ -162,7 +187,7 @@
     </nav>
     <!-- ##################### -->
     <!-- Introduction Section -->
-    <div class="container-fluid p-5" id="introduction" onmousemove="changeColorIntro()">
+    <div class="container-fluid p-5" id="introduction">
       <div class="row">
         <div class="col-6 text-center intro">
           <h1 style="font-size: 2.5rem">Your Very Free Article Here</h1>
@@ -176,18 +201,15 @@
         >
           <h3 style="font-size: 2rem">Or just click here to explore</h3>
           <!-- <p>👇</p> -->
-          <button type="button" class="btn btn-outline-info">CaTeGoRiEs</button>
+          <button type="button" class="btn btn-outline-info">
+            <a href="/categories">CaTeGoRiEs</a>
+          </button>
         </div>
       </div>
     </div>
     <!-- #################### -->
     <!-- Cards -->
-    <div
-      class="container-fluid"
-      style="display: flex; flex-direction: column; align-items: center"
-      id="mycards"
-      onmousemove="changeColorCards()"
-    >
+    <div class="container-fluid" style="display: flex; flex-direction: column; align-items: center" id="mycards">
       {%CARD%}
     </div>
     <!-- ##################### -->
